@@ -1,22 +1,15 @@
 package com.portfolio.portfolioback.security.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-
 import com.portfolio.portfolioback.security.enums.RolName;
-
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Getter @Setter
-@NoArgsConstructor
+
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +17,9 @@ public class Rol {
     @NotNull
     @Enumerated(EnumType.STRING)    
     private RolName rolName;
+
+    public Rol() {
+    }
 
     public Rol(RolName rolName) {
         this.rolName = rolName;
