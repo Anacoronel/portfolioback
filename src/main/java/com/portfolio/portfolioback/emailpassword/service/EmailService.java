@@ -1,6 +1,6 @@
 package com.portfolio.portfolioback.emailpassword.service;
 
-
+/*
 import com.portfolio.portfolioback.emailpassword.dto.EmailValuesDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,4 +47,4 @@ public class EmailService {
             e.printStackTrace();
         }
     }
-}
+}*/
