@@ -57,7 +57,7 @@ public class AuthController {
     }    
     
     @PostMapping("/new")
-    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "http://localhost:4200")
 
     public ResponseEntity<?> newUser(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
