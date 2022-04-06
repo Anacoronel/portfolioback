@@ -1,16 +1,14 @@
 package com.portfolio.portfolioback.security.service;
 
 
-
-import java.util.List;
-import java.util.Optional;
-
 import com.portfolio.portfolioback.security.entity.User;
 import com.portfolio.portfolioback.security.repository.UserRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,9 +25,7 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
     
-    public Optional<User> getByTokenPassword(String tokenPassword) {
-        return userRepository.findByTokenPassword(tokenPassword);
-    }
+
     
     public Optional<User> getByUsernameOrEmail(String usernameOrEmail) {
         return userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail);
