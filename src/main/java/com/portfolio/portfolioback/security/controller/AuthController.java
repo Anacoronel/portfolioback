@@ -70,8 +70,8 @@ public class AuthController {
                 passwordEncoder.encode(newUser.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.getByRolName(RolName.ROLE_USER).get());
-        /*if (newUser.getRoles().contains("admin"))
-        roles.add(rolService.getByRolName(RolName.ROLE_ADMIN).get());*/
+        if (newUser.getRoles().contains("admin"))
+        roles.add(rolService.getByRolName(RolName.ROLE_ADMIN).get());
         user.setRoles(roles);
         userService.save(user);
         return new ResponseEntity<>(new Message("User created"), HttpStatus.CREATED);

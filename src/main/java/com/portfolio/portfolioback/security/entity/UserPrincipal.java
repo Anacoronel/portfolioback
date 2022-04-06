@@ -70,6 +70,7 @@ public class UserPrincipal implements UserDetails {
         return name;
     }
 
+
     public String getEmail() {
         return email;
     }

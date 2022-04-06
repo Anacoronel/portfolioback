@@ -27,7 +27,6 @@ public class User {
     private String email;
     @NotNull
     private String password;
-    private String tokenPassword;
     @NotNull
     @ManyToMany(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
