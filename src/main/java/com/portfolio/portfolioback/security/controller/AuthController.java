@@ -68,7 +68,9 @@ public class AuthController {
             return new ResponseEntity<>(new Message("this email is already taken"), HttpStatus.BAD_REQUEST);
         User user = new User(
                 newUser.getUsername(), 
-                newUser.getEmail(), 
+                newUser.getEmail(),
+                newUser.getName(),
+
                 passwordEncoder.encode(newUser.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.getByRolName(RolName.ROLE_USER).get());
