@@ -57,6 +57,8 @@ public class AuthController {
     }    
     
     @PostMapping("/new")
+    @CrossOrigin(origins = "*")
+
     public ResponseEntity<?> newUser(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return new ResponseEntity<>(new Message("incorrect data or invalid email"), HttpStatus.BAD_REQUEST);
