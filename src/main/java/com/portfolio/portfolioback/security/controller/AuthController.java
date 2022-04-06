@@ -1,12 +1,6 @@
 package com.portfolio.portfolioback.security.controller;
 
 
-import java.text.ParseException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import javax.validation.Valid;
-
 import com.portfolio.portfolioback.dto.Message;
 import com.portfolio.portfolioback.security.dto.JwtDto;
 import com.portfolio.portfolioback.security.dto.LoginUser;
@@ -17,7 +11,6 @@ import com.portfolio.portfolioback.security.enums.RolName;
 import com.portfolio.portfolioback.security.jwt.JwtProvider;
 import com.portfolio.portfolioback.security.service.RolService;
 import com.portfolio.portfolioback.security.service.UserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,16 +21,17 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.text.ParseException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class AuthController {
     
     @Autowired
