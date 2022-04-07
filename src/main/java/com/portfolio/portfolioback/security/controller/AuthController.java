@@ -85,7 +85,7 @@ public class AuthController {
     public ResponseEntity<?> login(@Valid @RequestBody LoginUser loginUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return new ResponseEntity<>(new Message("fields with errors"), HttpStatus.BAD_REQUEST);
-        if (!userService.existsByUsernameOrEmail(loginUser.getUsername()))
+        if (!userService.existsByUsername(loginUser.getUsername()))
             return new ResponseEntity<>(new Message("fields with errors"), HttpStatus.BAD_REQUEST);
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
