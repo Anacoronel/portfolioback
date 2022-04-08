@@ -1,9 +1,10 @@
 package com.portfolio.portfolioback.security.dto;
 
 
-import javax.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.validation.constraints.NotBlank;
 
 @Getter @Setter
 public class LoginUser {
@@ -11,6 +12,7 @@ public class LoginUser {
     private String username;
     @NotBlank
     private String password;
+
     public String getUsername() {
         return username;
     }
