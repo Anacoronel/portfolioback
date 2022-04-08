@@ -82,6 +82,8 @@ public class AuthController {
     }
     
     @PostMapping("/login")
+    @CrossOrigin(origins = "http://localhost:4200")
+
     public ResponseEntity<JwtDto> login( @Valid @RequestBody LoginUser loginUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return new ResponseEntity(new Message("fields with errors"), HttpStatus.BAD_REQUEST);
