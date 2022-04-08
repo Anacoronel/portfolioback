@@ -82,7 +82,7 @@ public class AuthController {
     }
     
     @PostMapping("/login")
-    public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUser loginUser, BindingResult bindingResult) {
+    public ResponseEntity<JwtDto> login(@RequestBody LoginUser loginUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return new ResponseEntity(new Message("fields with errors"), HttpStatus.BAD_REQUEST);
         if (!userService.existsByUsername(loginUser.getUsername()))
