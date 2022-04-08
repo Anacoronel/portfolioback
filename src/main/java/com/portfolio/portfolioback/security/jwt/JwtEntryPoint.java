@@ -20,7 +20,7 @@ public class JwtEntryPoint implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest req, HttpServletResponse res, AuthenticationException authException) throws IOException, ServletException {
-        logger.error("Fail in commence method", authException.getMessage());
+        logger.error("Fail in commence method");
         res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "unauthorized");
     }
 }
