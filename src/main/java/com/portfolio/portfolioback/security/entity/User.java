@@ -61,8 +61,10 @@ public class User {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Project> project = new ArrayList<>();
 
-    public User(String username, String email, String password) {
+    public User(String name, String username, String email, String password) {
+        this.name=name;
         this.username = username;
+        this.email=email;
         this.password = password;
     }
 
