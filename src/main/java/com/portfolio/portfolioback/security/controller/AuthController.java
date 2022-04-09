@@ -82,7 +82,7 @@ public class AuthController {
     }
     
     @PostMapping("/login")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200/auth/login")
 
     public ResponseEntity<JwtDto> login( @Valid @RequestBody LoginUser loginUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
