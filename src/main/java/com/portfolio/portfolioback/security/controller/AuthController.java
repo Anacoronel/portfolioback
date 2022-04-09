@@ -3,9 +3,8 @@ package com.portfolio.portfolioback.security.controller;
 
 import com.portfolio.portfolioback.dto.Message;
 import com.portfolio.portfolioback.security.dto.JwtDto;
-import com.portfolio.portfolioback.security.dto.NewUser;
 import com.portfolio.portfolioback.security.dto.LoginUser;
-
+import com.portfolio.portfolioback.security.dto.NewUser;
 import com.portfolio.portfolioback.security.entity.Rol;
 import com.portfolio.portfolioback.security.entity.User;
 import com.portfolio.portfolioback.security.enums.RolName;
@@ -15,7 +14,6 @@ import com.portfolio.portfolioback.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,9 +23,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.text.ParseException;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -72,7 +68,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUSer loginUser, BindingResult bindingResult){
+    public ResponseEntity<?> login(@Valid @RequestBody LoginUser loginUser, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             return new ResponseEntity(new Message("Invalid fields."), HttpStatus.BAD_REQUEST);
         }
