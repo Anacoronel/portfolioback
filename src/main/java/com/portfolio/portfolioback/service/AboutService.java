@@ -1,14 +1,13 @@
 package com.portfolio.portfolioback.service;
 
 
+import com.portfolio.portfolioback.entity.About;
+import com.portfolio.portfolioback.repository.AboutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-import com.portfolio.portfolioback.entity.About;
-import com.portfolio.portfolioback.repository.AboutRepository;
 
 @Service
 @Transactional
@@ -22,7 +21,7 @@ public class AboutService implements iAboutService {
     }
     @Override
     public About getOne(int id){
-        return aboutRepository.findById(id).orElse(null);
+        return (About) aboutRepository.findByUserId(id);
     }
     
     @Override

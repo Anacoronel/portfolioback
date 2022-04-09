@@ -1,12 +1,12 @@
 package com.portfolio.portfolioback.service;
-import java.util.List;
 
 import com.portfolio.portfolioback.entity.Skill;
 import com.portfolio.portfolioback.repository.SkillRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Service
@@ -21,7 +21,7 @@ public class SkillService implements iSkillService{
     }
     @Override
     public Skill getOne(int id){
-        return skillRepository.findById(id).orElse(null);
+        return (Skill) skillRepository.findByUserId(id);
     }
     
     @Override

@@ -1,13 +1,12 @@
 package com.portfolio.portfolioback.service;
 
-import java.util.List;
-
 import com.portfolio.portfolioback.entity.Project;
 import com.portfolio.portfolioback.repository.ProjectRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -22,7 +21,7 @@ public class ProjectService implements iProjectService {
     }
     @Override
     public Project getOne(int id){
-        return projectRepository.findById(id).orElse(null);
+        return (Project) projectRepository.findByUserId(id);
     }
     
     @Override

@@ -1,13 +1,12 @@
 package com.portfolio.portfolioback.service;
 
-import java.util.List;
-
 import com.portfolio.portfolioback.entity.Person;
 import com.portfolio.portfolioback.repository.PersonRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Service
@@ -22,7 +21,7 @@ public class PersonService implements iPersonService {
     }
     @Override
     public Person getOne(int id){
-        return personRepository.findById(id).orElse(null);
+        return (Person) personRepository.findByUserId(id);
     }
     
     @Override

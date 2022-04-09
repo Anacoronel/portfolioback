@@ -1,13 +1,12 @@
 package com.portfolio.portfolioback.service;
 
-import java.util.List;
-
 import com.portfolio.portfolioback.entity.Language;
 import com.portfolio.portfolioback.repository.LanguageRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -21,7 +20,7 @@ public class LanguageService implements iLanguageService {
     }
     @Override
     public Language getOne(int id){
-        return languageRepository.findById(id).orElse(null);
+        return (Language) languageRepository.findByUserId(id);
     }
     
     @Override

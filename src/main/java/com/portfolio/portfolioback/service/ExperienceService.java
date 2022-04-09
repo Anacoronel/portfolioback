@@ -1,14 +1,13 @@
 package com.portfolio.portfolioback.service;
 
 
-import java.util.List;
-
 import com.portfolio.portfolioback.entity.Experience;
 import com.portfolio.portfolioback.repository.ExperienceRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 @Transactional
 @Service
 public class ExperienceService implements iExperienceService {
@@ -21,7 +20,7 @@ public class ExperienceService implements iExperienceService {
     }
     @Override
     public Experience getOne(int id){
-        return experienceRepository.findById(id).orElse(null);
+        return (Experience) experienceRepository.findByUserId(id);
     }
     
     @Override
