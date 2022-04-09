@@ -26,9 +26,7 @@ public class SkillService implements iSkillService{
             return skillRepository.findById(id);
         }
 
-        public Optional<Skill> getByName(String name){
-            return skillRepository.findByName(name);
-        }
+
 
         public void  save(Skill skill){
             skillRepository.save(skill);
@@ -42,7 +40,4 @@ public class SkillService implements iSkillService{
             return skillRepository.existsById(id);
         }
 
-        public boolean existsByName(String name){
-            return skillRepository.existsByName(name);
-        }
     }

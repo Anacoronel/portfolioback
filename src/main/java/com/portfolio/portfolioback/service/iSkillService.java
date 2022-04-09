@@ -8,10 +8,8 @@ import java.util.Optional;
 public interface iSkillService {
     public List<Skill> list();
     public Optional<Skill> getOne(int id);
-    public Optional<Skill> getByName(String name);
     public void  save(Skill skill);
     public void delete(int id);
     public boolean existsById(int id);
-    public boolean existsByName(String name);
 
 }
