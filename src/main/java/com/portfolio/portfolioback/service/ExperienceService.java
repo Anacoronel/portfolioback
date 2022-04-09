@@ -8,35 +8,32 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
 @Transactional
 @Service
 public class ExperienceService implements iExperienceService {
 
     @Autowired
     ExperienceRepository experienceRepository;
-    @Override
+
     public List<Experience> list(){
         return experienceRepository.findAll();
     }
-    @Override
-    public Experience getOne(int id){
-        return (Experience) experienceRepository.findByUserId(id);
+
+    public Optional<Experience> getOne(int id){
+        return experienceRepository.findById(id);
     }
-    
-    @Override
+
     public void  save(Experience experience){
         experienceRepository.save(experience);
     }
-    @Override
+
     public void delete(int id){
         experienceRepository.deleteById(id);
     }
-    @Override
+
     public boolean existsById(int id){
         return experienceRepository.existsById(id);
     }
-    public List<Experience> listByUserId(int id) {
-        return experienceRepository.findByUserId(id);
-    }
-   
 }

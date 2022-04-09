@@ -17,37 +17,24 @@ public class UserService {
     
     @Autowired
     UserRepository userRepository;
-    
-    public List<User> list() {
-        return userRepository.findAll();
-    }
-    
-    public Optional<User> getByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }
-    
 
-    
-    public Optional<User> getByUsernameOrEmail(String usernameOrEmail) {
-        return userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail);
+    public Optional<User> getByEmail(String email){
+        return userRepository.findByEmail(email);
     }
-    public Optional<User> getByTokenPassword(String tokenPassword){
-        return userRepository.findByTokenPassword(tokenPassword);
-    }
-    
-    public boolean existsByUsername(String username) {
-        return userRepository.existsByUsername(username);
-    }
-    
-    public boolean existsByUsernameOrEmail(String usernameOrEmail) {
-        return userRepository.existsByUsernameOrEmail(usernameOrEmail, usernameOrEmail);
-    }    
-    
-    public boolean existsByEmail(String email) {
+
+    public boolean existsByEmail(String email){
         return userRepository.existsByEmail(email);
     }
-    
-    public void save(User user) {
+
+    public Optional<User> getByUsername(String username){
+        return userRepository.findByUsername(username);
+    }
+
+    public boolean existsByUsername(String username){
+        return userRepository.existsByUsername(username);
+    }
+
+    public void save(User user){
         userRepository.save(user);
     }
 }

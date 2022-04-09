@@ -14,15 +14,16 @@ import java.io.IOException;
 
 
 @Component
-public class JwtEntryPoint implements AuthenticationEntryPoint {
+public class JwtEntryPoint implements AuthenticationEntryPoint{
 
     private final static Logger logger = LoggerFactory.getLogger(JwtEntryPoint.class);
 
     @Override
-    public void commence(HttpServletRequest req, HttpServletResponse res, AuthenticationException authException) throws IOException, ServletException {
-        logger.error("Fail in commence method");
-        res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "unauthorized");
+    public void commence(HttpServletRequest req, HttpServletResponse res, AuthenticationException e) throws IOException, ServletException {
+        logger.error("Method commence failed.");
+        res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized.");
     }
+
 }
 
 

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -39,7 +40,7 @@ public class LanguageController {
         return languageserv.list();
     }
     @GetMapping("/{id}")
-	public  Language getOne(@PathVariable Integer id){
+	public Optional<Language> getOne(@PathVariable Integer id){
             return languageserv.getOne(id);
              
         }

@@ -3,8 +3,9 @@ package com.portfolio.portfolioback.security.controller;
 
 import com.portfolio.portfolioback.dto.Message;
 import com.portfolio.portfolioback.security.dto.JwtDto;
-import com.portfolio.portfolioback.security.dto.LoginUser;
 import com.portfolio.portfolioback.security.dto.NewUser;
+import com.portfolio.portfolioback.security.dto.LoginUser;
+
 import com.portfolio.portfolioback.security.entity.Rol;
 import com.portfolio.portfolioback.security.entity.User;
 import com.portfolio.portfolioback.security.enums.RolName;
@@ -33,75 +34,57 @@ import java.util.Set;
 @RequestMapping("/auth")
 @CrossOrigin(origins = "*")
 public class AuthController {
-    
     @Autowired
     PasswordEncoder passwordEncoder;
-    
+
     @Autowired
     AuthenticationManager authenticationManager;
-    
+
     @Autowired
     UserService userService;
-    
+
     @Autowired
     RolService rolService;
-    
+
     @Autowired
     JwtProvider jwtProvider;
-    
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/list")
-    public ResponseEntity<List<User>> list() {
-        List<User> list = userService.list();
-        return new ResponseEntity<>(list, HttpStatus.OK);
-    }    
-    
+
     @PostMapping("/new")
-    @CrossOrigin(origins = "http://localhost:4200")
-
-    public ResponseEntity<?> newUser(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return new ResponseEntity<>(new Message("incorrect data or invalid email"), HttpStatus.BAD_REQUEST);
-        if (userService.existsByUsername(newUser.getUsername()))
-            return new ResponseEntity<>(new Message("this username is already taken"), HttpStatus.BAD_REQUEST);
-        if (userService.existsByEmail(newUser.getEmail()))
-            return new ResponseEntity<>(new Message("this email is already taken"), HttpStatus.BAD_REQUEST);
-        User user = new User(
-                newUser.getUsername(), 
-                newUser.getEmail(),
-                newUser.getName(),
-
-                passwordEncoder.encode(newUser.getPassword()));
+    public ResponseEntity<?> create(@Valid @RequestBody NewUser newUser, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return new ResponseEntity(new Message("Invalid fields."), HttpStatus.BAD_REQUEST);
+        }
+        if(userService.existsByEmail(newUser.getEmail())){
+            return new ResponseEntity(new Message("Email already exists."), HttpStatus.BAD_REQUEST);
+        }
+        if(userService.existsByUsername(newUser.getUsername())){
+            return new ResponseEntity(new Message("Username already exists."), HttpStatus.BAD_REQUEST);
+        }
+        User user = new User(newUser.getEmail(), newUser.getUsername(), passwordEncoder.encode(newUser.getPassword()));
         Set<Rol> roles = new HashSet<>();
-        roles.add(rolService.getByRolName(RolName.ROLE_USER).get());
-        if (newUser.getRoles().contains("admin"))
-        roles.add(rolService.getByRolName(RolName.ROLE_ADMIN).get());
+        roles.add(rolService.getByRoleName(RolName.ROLE_USER).get());
+        if(newUser.getRoles().contains("admin")){
+            roles.add(rolService.getByRoleName(RolName.ROLE_ADMIN).get());
+        }
         user.setRoles(roles);
         userService.save(user);
-        return new ResponseEntity<>(new Message("User created"), HttpStatus.CREATED);
+        return new ResponseEntity(new Message("User saved."), HttpStatus.CREATED);
     }
-    
+
     @PostMapping("/login")
-    @CrossOrigin(origins = "http://localhost:4200/auth/login")
-
-    public ResponseEntity<JwtDto> login( @Valid @RequestBody LoginUser loginUser, BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return new ResponseEntity(new Message("fields with errors"), HttpStatus.BAD_REQUEST);
-
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginUser.getUsername(),
-                        loginUser.getPassword()));
+    public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUSer loginUser, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return new ResponseEntity(new Message("Invalid fields."), HttpStatus.BAD_REQUEST);
+        }
+        if(!userService.existsByUsername(loginUser.getUsername())){
+            return new ResponseEntity(new Message("Username doesn't exists."), HttpStatus.BAD_REQUEST);
+        }
+        Authentication authentication =
+                authenticationManager
+                        .authenticate(new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateToken(authentication);
         JwtDto jwtDto = new JwtDto(jwt);
         return new ResponseEntity(jwtDto, HttpStatus.OK);
-    }
-    
-    @PostMapping("/refresh")
-    public ResponseEntity<JwtDto> refreshToken(@RequestBody JwtDto jwtDto) throws ParseException {
-        String token = jwtProvider.refreshToken(jwtDto);
-        JwtDto jwt = new JwtDto(token);
-        return new ResponseEntity(jwt, HttpStatus.OK);
     }
 }

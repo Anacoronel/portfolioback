@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -15,29 +16,24 @@ public class ProjectService implements iProjectService {
 
     @Autowired
     ProjectRepository projectRepository;
-    @Override
+
     public List<Project> list(){
         return projectRepository.findAll();
     }
-    @Override
-    public Project getOne(int id){
-        return (Project) projectRepository.findByUserId(id);
+
+    public Optional<Project> getOne(int id){
+        return projectRepository.findById(id);
     }
-    
-    @Override
+
     public void  save(Project project){
         projectRepository.save(project);
     }
-    @Override
+
     public void delete(int id){
         projectRepository.deleteById(id);
     }
-    @Override
+
     public boolean existsById(int id){
         return projectRepository.existsById(id);
     }
-    public List<Project> listByUserId(int id) {
-        return projectRepository.findByUserId(id);
-    }
-   
 }

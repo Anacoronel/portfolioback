@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -39,7 +40,7 @@ public class ProjectController {
         return projectserv.list();
     }
     @GetMapping("/{id}")
-	public  Project getOne(@PathVariable Integer id){
+	public Optional<Project> getOne(@PathVariable Integer id){
             return projectserv.getOne(id);
              
         }
@@ -55,7 +56,7 @@ public class ProjectController {
         project.setDate(project.getDate());
         project.setText(project.getText());
         project.setLink(project.getLink());
-        project.setTecn(project.getTecn());
+        project.setTechs(project.getTechs());
 
         projectserv.save(project);
         return project;

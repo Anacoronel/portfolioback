@@ -1,14 +1,17 @@
 package com.portfolio.portfolioback.service;
 
-import java.util.List;
-
 import com.portfolio.portfolioback.entity.Skill;
+
+import java.util.List;
+import java.util.Optional;
 
 public interface iSkillService {
     public List<Skill> list();
-    public Skill getOne(int id);
+    public Optional<Skill> getOne(int id);
+    public Optional<Skill> getByName(String name);
     public void  save(Skill skill);
     public void delete(int id);
     public boolean existsById(int id);
-    public List<Skill> listByUserId(int id);
+    public boolean existsByName(String name);
+
 }

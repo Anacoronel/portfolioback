@@ -21,4 +21,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userService.getByUsername(username).get();
         return UserPrincipal.build(user);
     }
+
 }

@@ -7,37 +7,42 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
 @Transactional
 public class SkillService implements iSkillService{
 
-    @Autowired
-    SkillRepository skillRepository;
-    @Override
-    public List<Skill> list(){
-        return skillRepository.findAll();
+
+        @Autowired
+        SkillRepository skillRepository;
+
+        public List<Skill> list(){
+            return skillRepository.findAll();
+        }
+
+        public Optional<Skill> getOne(int id){
+            return skillRepository.findById(id);
+        }
+
+        public Optional<Skill> getByName(String name){
+            return skillRepository.findByName(name);
+        }
+
+        public void  save(Skill skill){
+            skillRepository.save(skill);
+        }
+
+        public void delete(int id){
+            skillRepository.deleteById(id);
+        }
+
+        public boolean existsById(int id){
+            return skillRepository.existsById(id);
+        }
+
+        public boolean existsByName(String name){
+            return skillRepository.existsByName(name);
+        }
     }
-    @Override
-    public Skill getOne(int id){
-        return (Skill) skillRepository.findByUserId(id);
-    }
-    
-    @Override
-    public void  save(Skill skill){
-        skillRepository.save(skill);
-    }
-    @Override
-    public void delete(int id){
-        skillRepository.deleteById(id);
-    }
-    @Override
-    public boolean existsById(int id){
-        return skillRepository.existsById(id);
-    }
-    public List<Skill> listByUserId(int id) {
-        return skillRepository.findByUserId(id);
-    }
-   
-}
