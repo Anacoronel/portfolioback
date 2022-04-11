@@ -10,4 +10,8 @@ public class LanguageDto {
     private String languages;
     private String level;
     private int person_id;
+
+
+
+
 }
