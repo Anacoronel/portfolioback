@@ -15,7 +15,7 @@ public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String language;
+    private String languages;
     private String level;
 
     @JsonIgnoreProperties("language")
@@ -24,8 +24,8 @@ public class Language {
 
     public Language(){}
 
-    public Language(String language, String level, Person person) {
-        this.language = language;
+    public Language(String languages, String level, Person person) {
+        this.languages = languages;
         this.level = level;
         this.person = person;
     }
