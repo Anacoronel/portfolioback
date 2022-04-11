@@ -1,6 +1,7 @@
 package com.portfolio.portfolioback.controller;
 
 
+import com.portfolio.portfolioback.dto.LanguageDto;
 import com.portfolio.portfolioback.entity.Language;
 import com.portfolio.portfolioback.service.iLanguageService;
 import com.portfolio.portfolioback.service.iPersonService;
@@ -25,13 +26,22 @@ public class LanguageController {
     private iPersonService personService;
 
 
+
+
+
     @PostMapping("/new")
-    public Language save(@RequestBody Language language) {
-        languageserv.save(language);
-        return language;
+    public LanguageDto save(@RequestBody LanguageDto languageDto) {
+
+        languageDto.setId(languageDto.getId());
+        languageDto.setLanguages(languageDto.getLanguages());
+        languageDto.setLevel(languageDto.getLevel());
+        languageDto.setPerson_id(languageDto.getPerson_id());
+        return languageDto;
+        /*languageserv.save(language);
+        return language;*/
     }
 
-    public void setEducationService(iLanguageService languageserv) {
+    public void setLanguageService(iLanguageService languageserv) {
         this.languageserv = languageserv;
     }
 
