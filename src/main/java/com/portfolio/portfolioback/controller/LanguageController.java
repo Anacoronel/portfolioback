@@ -3,10 +3,10 @@ package com.portfolio.portfolioback.controller;
 
 import com.portfolio.portfolioback.entity.Language;
 import com.portfolio.portfolioback.service.iLanguageService;
+import com.portfolio.portfolioback.service.iPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,16 +21,16 @@ public class LanguageController {
 
     private iLanguageService languageserv;
 
+    @Autowired
+    private iPersonService personService;
 
-    List<Language> listaLanguage  = new ArrayList<>();
 
-    
-    @PostMapping("/new")
-    public Language save(@RequestBody Language language){
+    @PostMapping("/new/{personId}")
+    public Language save(@PathVariable Integer personId,  @RequestBody Language language) {
+        personService.getOne(personId);
         languageserv.save(language);
         return language;
     }
-    
 
     public void setEducationService(iLanguageService languageserv) {
         this.languageserv = languageserv;
