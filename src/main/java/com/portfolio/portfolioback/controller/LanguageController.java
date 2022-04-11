@@ -25,9 +25,8 @@ public class LanguageController {
     private iPersonService personService;
 
 
-    @PostMapping("/new/{personId}")
-    public Language save(@PathVariable Integer personId,  @RequestBody Language language) {
-        personService.getOne(personId);
+    @PostMapping("/new")
+    public Language save(@RequestBody Language language) {
         languageserv.save(language);
         return language;
     }
