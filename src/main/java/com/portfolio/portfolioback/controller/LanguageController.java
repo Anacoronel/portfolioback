@@ -6,6 +6,7 @@ import com.portfolio.portfolioback.service.iLanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,7 @@ public class LanguageController {
     private iLanguageService languageserv;
 
 
+    List<Language> listaLanguage  = new ArrayList<>();
 
     
     @PostMapping("/new")
