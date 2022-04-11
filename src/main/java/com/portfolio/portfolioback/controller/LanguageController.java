@@ -37,7 +37,7 @@ public class LanguageController {
         language.setId(language.getId());
         language.setLanguages(language.getLanguages());
         language.setLevel(language.getLevel());
-        person.setId(person.getId());
+        language.setPerson(language.getPerson());
 
         languageserv.save(language);
             return language;
