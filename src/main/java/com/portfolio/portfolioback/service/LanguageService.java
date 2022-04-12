@@ -33,7 +33,7 @@ public class LanguageService implements iLanguageService {
         Language language= new Language();
         language.setLanguages(languageDto.getLanguages());
         language.setLevel(languageDto.getLevel());
-        person = personRepository.findById(person.getId()).get();
+        person = personRepository.findById(languageDto.getPerson_id()).get();
         language.setPerson(person);
         languageRepository.save(language);
     }
