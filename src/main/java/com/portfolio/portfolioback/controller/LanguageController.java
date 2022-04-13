@@ -27,11 +27,13 @@ public class LanguageController {
     private iPersonService personService;
 
 
-
-
-
     @PostMapping("/new")
     public Language save(@RequestBody Language language) {
+            LanguageDto languageDto= new LanguageDto();
+            Person person=new Person();
+            languageDto.getPerson_id();
+            language.getPerson();
+            language.setPerson(person);
             languageserv.save(language);
             return language;
         }
