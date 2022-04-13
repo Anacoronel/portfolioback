@@ -31,7 +31,7 @@ public class LanguageController {
 
 
     @PostMapping("/new")
-    public Language save(@RequestBody Language language, @RequestBody Person person, LanguageDto languageDto) {
+    public Language save(@RequestBody Language language) {
             languageserv.save(language);
             return language;
         }
