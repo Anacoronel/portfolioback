@@ -4,15 +4,16 @@ package com.portfolio.portfolioback.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.jackson.JsonComponent;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Getter @Setter
-public class  Person implements Serializable {
+@JsonComponent
+public class  Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
