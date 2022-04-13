@@ -31,7 +31,8 @@ public class LanguageController {
     @PostMapping("/new")
     public Language save(@RequestBody Language language) {
             languageserv.save(language);
-            return language;}
+            return language;
+        }
 
 
     public void setLanguageService(iLanguageService languageserv) {

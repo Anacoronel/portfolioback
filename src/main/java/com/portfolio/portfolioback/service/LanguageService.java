@@ -1,8 +1,6 @@
 package com.portfolio.portfolioback.service;
 
-import com.portfolio.portfolioback.dto.LanguageDto;
 import com.portfolio.portfolioback.entity.Language;
-import com.portfolio.portfolioback.entity.Person;
 import com.portfolio.portfolioback.repository.LanguageRepository;
 import com.portfolio.portfolioback.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +27,10 @@ public class LanguageService implements iLanguageService {
         return languageRepository.findById(id);
     }
     @Override
-    public void  save(LanguageDto languageDto, Person person){
-        Language language= new Language();
-        language.setLanguages(languageDto.getLanguages());
-        language.setLevel(languageDto.getLevel());
-        person = personRepository.findById(languageDto.getPerson_id()).get();
-        language.setPerson(person);
-        languageRepository.save(language);
+    public  void save(Language language){
+            languageRepository.save(language);
+
+
     }
 
     public void delete(int id){
