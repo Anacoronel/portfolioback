@@ -20,7 +20,7 @@ public class PersonService implements iPersonService {
         return personRepository.findAll();
     }
 
-    public Optional<Person> getOne(int id){
+    public Optional<Person> getOne(Integer id){
         return personRepository.findById(id);
     }
 
@@ -29,11 +29,11 @@ public class PersonService implements iPersonService {
         personRepository.save(person);
     }
 
-    public void delete(int id){
+    public void delete(Integer id){
         personRepository.deleteById(id);
     }
 
-    public boolean existsById(int id){
+    public boolean existsById(Integer id){
         return personRepository.existsById(id);
     }
 }

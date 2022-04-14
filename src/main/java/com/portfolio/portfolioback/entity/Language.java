@@ -14,12 +14,8 @@ import javax.persistence.*;
 
 public class Language {
 
-    public Language(int person_id, String languages, String level) {
-    }
 
-    public int getId() {
-        return id;
-    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,5 +45,11 @@ public class Language {
         this.person = person;
     }
 
+    public Language(String languages, String level, int person_id) {
+    }
+
+    public int getId() {
+        return id;
+    }
 
 }
