@@ -27,8 +27,8 @@ public class LanguageController {
     private iPersonService personService;
 
     @PostMapping("/new")
-    public Language save(@RequestBody LanguageDto languageDto,  Person person) {
-        Language language=new Language(
+    public Language save(@RequestBody Language language, LanguageDto languageDto,  Person person) {
+        language=new Language(
 
                 languageDto.getLanguages(),
         languageDto.getLevel(), languageDto.getPerson_id());
