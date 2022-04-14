@@ -1,1 +1,292 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #383838;
+    align-items: center;
+  }
+  .header-right {
+    display: flex;
+    float: right;
+  }
+  
+  #logoarg {
+    width: 100px;
+    height: auto;
+  }
+  #sns{
+      margin-right: 20px;
+      margin-left: 10px;
+      color: antiquewhite;
+      font-size: 20px;
+    }
+  #sns1{
+    margin-right: 20px;
+    margin-left: 10px;
+    color: antiquewhite;
+    font-size: 20px;
+  }
+  #sns2{
+      margin-right: 20px;
+      margin-left: 10px;
+      color: antiquewhite;
+      font-size: 20px;
+    }#sns3{
+      margin-right: 20px;
+      margin-left: 10px;
+      color: antiquewhite;
+      font-size: 20px;
+    }
+  
+    #sns4{
+      margin-right: 20px;
+      margin-left: 10px;
+      color: antiquewhite;
+      font-size: 20px;
+    }
+  
+  
+  #sign-out {
+    margin-bottom: 6px;
+    margin-right: 20px;
+    margin-left: 10px;
+  }
+  .jumbotron-image {
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height:8rem;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      
+  }
+  #nombre{
+  position:relative;
+  left:8rem;
+  top:5rem;
+  }
+  
+  
+  .fotodeperfil{
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+      margin-top: -60px;
+      margin-left: 10px;
+      box-shadow:2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mb-4{
+      color:#383838;
+  }
+  .info{
+      margin-left: 8rem !important;
+      font-size: medium;
+      color: #383838;
+      
+      
+     
+  }
+  #info1{
+    color: #383838;
+      font-size: medium;
+      margin-left: 3rem;
+      margin-top:-1.5rem;
+  }
+  .card-title{
+      color:#2f535e;
+      
+  }
+  .card-text{
+    color: #383838;
+    
+  }
+  #mail{
+      color:#2f535e;
+      
+  }
+  footer{ 
+      display: flex;
+background: linear-gradient(0deg, rgba(238,165,0,1) 0%, rgba(56,56,56,1) 28%, rgba(56,56,56,1) 68%, rgba(47,83,94,1) 77%);
+  }
+  
+  footer p{
+    color:#FFF;
+    font-size: smaller;
+    margin-left: 5rem;
+     }
+  
+  .fa fa-trash, .fa fa-edit, .fa fa-plus, .fa fa-pencil{
+      color:#2f535e;
+      
+      
+  }
+  .agregar{
+    color:#2f535e;
+    font-size: medium;
+    margin-left:1rem; 
+   
+    
+  }
+  
+  #icon1{
+      margin-left: 9rem;
+      color:#2f535e;
+      font-size: medium;
+      
+  }
+  .icon3{
+      float: right;
+      margin-left: 20px;
+      color:#2f535e;
+      font-size: medium;
+      
+  }
+  .icon4{
+      float:right;
+      color:#2f535e;
+      font-size: medium;
+     
+  }
+  #imgstec{
+      text-align:center;
+  }
+  #imgstec2{
+      text-align:center;
+  }
+  .tecno{
+      height:3.5rem;
+      width:auto;
+      display: inline-block;
+  }
+  #sp{
+      margin-left: -10px;
+  }
+  #logouni{
+      height: 3rem;
+      width: auto;
+      
+      
+      
+  }
+
+  @media screen and (min-width: 520px)and (max-width: 768px){
+    .card{
+     
+     min-width:450px !important;
+     border:1px solid rgba(0,0,0,0.125);
+
+    }
+    .card-body{
+      border:1px solid rgba(0,0,0,0.125);
+
+    }
+   
+     
+  }
+  
+      @media screen and (max-width: 490px){
+          html {
+               font-size: smaller;
+               
+            }
+            .icon4 {
+              font-size: 13px !important;
+            }
+            #icon1{
+              margin-left:7rem;
+              font-size: 13px !important;
+            }
+            .icon3 {
+              font-size:13px !important;
+            }
+            #acerca{
+              font-size:small !important;
+            }
+            #sns {
+              font-size: smaller !important;
+              margin-left:.2rem;
+              margin-right: .3rem;
+
+            }
+            #sns2{
+              font-size:smaller !important;
+              margin-left:-.3rem;
+              margin-right:.3rem;
+
+
+            }
+
+              #sns3{
+                font-size:smaller !important;
+                margin-right: 0.3rem ;
+                margin-left:.2rem;
+              }
+              #sign-out{
+                margin-right:0.4rem !important;
+                margin-left:.2rem;
+                font-size: smaller;
+
+              }
+              #nombre{
+                left:6rem;
+              }
+
+              .fotodeperfil{
+                height: 5rem;
+                width:5rem;
+                margin-left: 5px;
+              }
+
+            .info {
+              font-size: small;
+              margin-left: 6rem !important;
+            }
+            #info1{
+              font-size: small;
+              margin-left: 6rem !important;
+
+            }
+            .proyectos {
+              margin-left:-1.2rem;
+            }
+            .skills{
+              margin-left:-1.4rem !important;
+
+            }
+            .idiomas{
+              margin-left:-1.2rem !important;
+            }
+          }
+  .logoargp{
+      width:60px;
+      height: auto;
+      float:right;
+      margin-top: -1.5rem;
+      margin-right: 2rem;
+  }
+  #edu1{
+      float:left;
+      margin-left: 1rem;
+  }
+  #edu2{
+  float: right;
+  margin-right: 2rem;
+  
+  }
+  ul{
+      list-style:none;
+  
+  }
+  #acerca{
+      color:#383838 !important;
+      font-size: medium;
+      
+  }
+  .form-control{
+    border:none;
+  }
+  
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;color:#383838 }
