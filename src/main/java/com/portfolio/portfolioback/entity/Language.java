@@ -30,16 +30,18 @@ public class Language {
     @ManyToOne(optional = false)
     @JoinColumn(name="person_id", referencedColumnName = "id")
     private Person person;
+    private int person_id;
 
     public Language(){}
 
-    public Language(String languages, String level, Person person) {
+    public Language(String languages, String level, int person_id,Person person) {
         this.languages = languages;
         this.level = level;
         this.person = person;
+        this.person_id=person_id;
     }
 
-    public Language(String languages, String level, int person_id) {
+    public Language(String languages, String level, Person person,int person_id) {
     }
 
     public int getId() {
@@ -47,6 +49,10 @@ public class Language {
     }
     public Person getPerson() {
         return person;
+    }
+
+    public void setPerson_id(){
+        this.person_id=person_id;
     }
 
     public void setPerson(Person person) {
