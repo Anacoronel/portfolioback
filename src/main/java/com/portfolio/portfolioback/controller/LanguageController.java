@@ -9,6 +9,7 @@ import com.portfolio.portfolioback.service.iPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,16 +29,18 @@ public class LanguageController {
 
 
     @PostMapping("/new")
-    public Language save(@RequestBody  LanguageDto languageDto) {
-           Language language= new Language();
-           Person person=new Person();
-        languageDto.setPerson_id(languageDto.getPerson_id());
-           language.setPerson(language.getPerson());
-           language.setLevel(language.getLevel());
-           language.setLanguages(language.getLanguages());
-            languageserv.save(language);
-            return language;
-        }
+    public Language save(@RequestBody LanguageDto languageDto, Principal principal) {
+        Language language= new Language(
+        languageDto.getPerson_id(),
+        languageDto.getLanguages(),
+        languageDto.getLevel());
+
+        Person person=personService.getOne(Integer.parseInt(principal.getName())).get();
+        language.setPerson(person);
+        languageserv.save(language);
+        return language;
+
+    }
 
 
     public void setLanguageService(iLanguageService languageserv) {

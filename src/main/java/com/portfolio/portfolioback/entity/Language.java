@@ -14,6 +14,9 @@ import javax.persistence.*;
 
 public class Language {
 
+    public Language(int person_id, String languages, String level) {
+    }
+
     public int getId() {
         return id;
     }
