@@ -3,7 +3,6 @@ package com.portfolio.portfolioback.controller;
 
 import com.portfolio.portfolioback.dto.LanguageDto;
 import com.portfolio.portfolioback.entity.Language;
-import com.portfolio.portfolioback.entity.Person;
 import com.portfolio.portfolioback.service.iLanguageService;
 import com.portfolio.portfolioback.service.iPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +30,11 @@ public class LanguageController {
     @PostMapping("/new")
     public Language save(@RequestBody LanguageDto languageDto, Principal principal) {
         Language language= new Language(
-        languageDto.getPerson_id(),
         languageDto.getLanguages(),
-        languageDto.getLevel());
+        languageDto.getLevel(),
+        languageDto.getPerson_id());
 
-        Person person=personService.getOne(Integer.parseInt(principal.getName())).get();
-        language.setPerson(person);
+        language.setPerson(language.getPerson());
         languageserv.save(language);
         return language;
 
