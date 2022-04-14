@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.boot.jackson.JsonComponent;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -24,22 +25,22 @@ public class Language {
     private String level;
 
 
-    public Person getPerson() {
+    public Optional<Person> getPerson() {
         return person;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(Optional<Person> person) {
         this.person = person;
     }
 
     @JsonIgnoreProperties("language")
     @ManyToOne(optional = false)
     @JoinColumn(name="person_id", referencedColumnName = "id")
-    private Person person;
+    private Optional<Person> person;
 
     public Language(){}
 
-    public Language(String languages, String level, Person person) {
+    public Language(String languages, String level, Optional<Person> person) {
         this.languages = languages;
         this.level = level;
         this.person = person;

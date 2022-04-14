@@ -30,17 +30,16 @@ public class LanguageController {
 
     @PostMapping("/new")
     public Language save(@RequestBody LanguageDto languageDto, Principal principal) {
-        Language language= new Language(
-        languageDto.getPerson_id(),
-        languageDto.getLanguages(),
-        languageDto.getLevel());
+        Optional<Person> person=personService.getOne(languageDto.getPerson_id());
 
-        Person person=personService.getOne(Integer.parseInt(principal.getName())).get();
-        language.setPerson(person);
-        languageserv.save(language);
-        return language;
+        Language language=new Language(
+        languageDto.getLanguages(),
+        languageDto.getLevel(), languageDto.getPerson_id());
+        languageserv.save(language); return language;
 
     }
+
+
 
 
     public void setLanguageService(iLanguageService languageserv) {
