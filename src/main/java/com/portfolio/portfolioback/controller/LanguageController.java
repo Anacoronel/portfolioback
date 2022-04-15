@@ -27,11 +27,10 @@ public class LanguageController {
 
     @PostMapping("/new")
     public Language save(@RequestBody LanguageDto languageDto, Integer id) {
-        personService.getOne(id);
         Language language=new Language();
         language.setLanguages(language.getLanguages());
         language.setLevel(language.getLevel());
-        language.setPerson(language.getPerson());
+        language.setPerson(personService.getOne(id).get());
 
 
         languageserv.save(language); return language;
