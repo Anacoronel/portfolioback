@@ -2,6 +2,7 @@ package com.portfolio.portfolioback.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,6 +44,7 @@ public class  Person {
 
 
     @JsonIgnoreProperties("person")
+    @JsonManagedReference
     @OneToMany(mappedBy = "person", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Language> languages = new HashSet<>();
 
