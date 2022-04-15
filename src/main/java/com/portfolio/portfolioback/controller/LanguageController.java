@@ -28,9 +28,9 @@ public class LanguageController {
     @PostMapping("/new")
     public Language save(@RequestBody LanguageDto languageDto) {
         Language language=new Language();
-        language.getLanguages();
-        language.getLanguages();
-        language.getPerson();
+        language.setLanguages(language.getLanguages());
+        language.setLevel(language.getLevel());
+        language.setPerson(language.getPerson());
 
 
         languageserv.save(language); return language;
