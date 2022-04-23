@@ -29,10 +29,10 @@ public class LanguageController {
     public Language save(@RequestBody Language language) {
         Person person= new Person();
         person.getLanguages().add(language);
-
+        language.getPerson();
        language.setLanguages(language.getLanguages());
         language.setLevel(language.getLevel());
-        language.setPerson(language.getPerson());
+
 
 
         languageserv.save(language); return language;
