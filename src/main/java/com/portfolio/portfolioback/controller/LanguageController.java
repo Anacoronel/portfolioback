@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("person/1/language")
+@RequestMapping("/language")
 
 
 public class LanguageController {
@@ -26,7 +26,7 @@ public class LanguageController {
     private PersonRepository personRepository;
 
     @PostMapping("/new")
-    public Language save(@RequestBody Language language, @PathVariable Integer id) {
+    public Language save(@RequestBody Language language) {
         Person person= personRepository.getById(id);
         person.getLanguages().add(language);
 
