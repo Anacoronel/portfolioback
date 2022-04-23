@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("person/{id}/language")
+@RequestMapping("person/1/language")
 
 
 public class LanguageController {
