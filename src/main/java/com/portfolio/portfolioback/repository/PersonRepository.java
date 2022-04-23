@@ -11,4 +11,7 @@ import java.util.Optional;
 public interface PersonRepository extends JpaRepository<Person, Integer> {
     @Override
     Optional<Person> findById(Integer integer);
+
+    @Override
+    Person getById(Integer integer);
 }
