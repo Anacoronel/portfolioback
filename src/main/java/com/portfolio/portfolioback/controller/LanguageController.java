@@ -27,7 +27,7 @@ public class LanguageController {
 
     @PostMapping("/new")
     public Language save(@RequestBody Language language) {
-        Person person= personRepository.getById(id);
+        Person person= new Person();
         person.getLanguages().add(language);
 
       /*  Language language=new Language();
