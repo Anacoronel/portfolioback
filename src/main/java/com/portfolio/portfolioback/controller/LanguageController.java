@@ -25,7 +25,7 @@ public class LanguageController {
     @Autowired
     private PersonRepository personRepository;
 
-    @PostMapping("/new/{id}")
+    @PostMapping("/new/{person_id}")
     public Language save(@RequestBody Language language, @PathVariable Integer person_id) {
         Person person= personRepository.getById(person_id);
         person.getLanguages().add(language);
