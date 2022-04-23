@@ -25,13 +25,13 @@ public class LanguageController {
     @Autowired
     private PersonRepository personRepository;
 
-    @PostMapping("/new")
-    public Language save(@RequestBody Language language) {
+    @PostMapping("/new/{id}")
+    public Language save(@RequestBody Language language , @PathVariable Person id) {
         Person person= new Person();
         person.getLanguages().add(language);
-        language.getPerson();
+       /* language.getPerson();
        language.setLanguages(language.getLanguages());
-        language.setLevel(language.getLevel());
+        language.setLevel(language.getLevel());*/
 
 
 
