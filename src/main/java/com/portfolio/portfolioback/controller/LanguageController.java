@@ -30,10 +30,9 @@ public class LanguageController {
         Person person= new Person();
         person.getLanguages().add(language);
 
-      /*  Language language=new Language();
-        language.setLanguages(language.getLanguages());
+       language.setLanguages(language.getLanguages());
         language.setLevel(language.getLevel());
-        language.setPerson(personService.getOne(id).get());*/
+        language.setPerson(language.getPerson());
 
 
         languageserv.save(language); return language;
