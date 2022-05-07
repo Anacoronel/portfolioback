@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface iProjectService {
     public List<Project> list();
-    public Optional<Project> getOne(int id);
+    public Optional<Project> getOne(Long id);
     public void  save(Project project);
-    public void delete(int id);
-    public boolean existsById(int id);
+    public void delete(Long id);
+    public boolean existsById(Long id);
 }

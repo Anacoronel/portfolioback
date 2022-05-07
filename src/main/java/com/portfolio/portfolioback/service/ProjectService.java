@@ -21,7 +21,7 @@ public class ProjectService implements iProjectService {
         return projectRepository.findAll();
     }
 
-    public Optional<Project> getOne(int id){
+    public Optional<Project> getOne(Long id){
         return projectRepository.findById(id);
     }
 
@@ -29,11 +29,11 @@ public class ProjectService implements iProjectService {
         projectRepository.save(project);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         projectRepository.deleteById(id);
     }
 
-    public boolean existsById(int id){
+    public boolean existsById(Long id){
         return projectRepository.existsById(id);
     }
 }

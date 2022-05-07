@@ -40,17 +40,17 @@ public class ProjectController {
         return projectserv.list();
     }
     @GetMapping("/{id}")
-	public Optional<Project> getOne(@PathVariable Integer id){
+	public Optional<Project> getOne(@PathVariable Long id){
             return projectserv.getOne(id);
              
         }
     
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id){
         projectserv.delete(id);
     }
     @PutMapping("/edit/{id}")
-    public Project edit(@PathVariable Integer id,@RequestBody Project project){
+    public Project edit(@PathVariable Long id,@RequestBody Project project){
          projectserv.getOne(id);
         
         project.setDate(project.getDate());

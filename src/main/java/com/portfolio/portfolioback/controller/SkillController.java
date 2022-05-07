@@ -39,17 +39,17 @@ public class SkillController {
         return skillserv.list();
     }
     @GetMapping("/{id}")
-	public Optional<Skill> getOne(@PathVariable Integer id){
+	public Optional<Skill> getOne(@PathVariable Long id){
             return skillserv.getOne(id);
              
         }
     
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id){
         skillserv.delete(id);
     }
     @PutMapping("/edit/{id}")
-    public Skill edit(@PathVariable Integer id,@RequestBody Skill skill){
+    public Skill edit(@PathVariable Long id,@RequestBody Skill skill){
          skillserv.getOne(id);
         
         skill.setValue(skill.getValue());

@@ -21,7 +21,7 @@ public class AboutService implements iAboutService {
         return aboutRepository.findAll();
     }
 
-    public Optional<About> getOne(int id){
+    public Optional<About> getOne(Long id){
         return aboutRepository.findById(id);
     }
 
@@ -29,7 +29,7 @@ public class AboutService implements iAboutService {
         aboutRepository.save(about);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         aboutRepository.deleteById(id);
     }
 

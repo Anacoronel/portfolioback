@@ -1,10 +1,12 @@
 package com.portfolio.portfolioback.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 @Getter @Setter
@@ -12,18 +14,15 @@ import javax.persistence.*;
 public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String text;
     private Long value;
-    @JsonIgnoreProperties("skill")
-    @ManyToOne(optional = false)
-    private Person person;
+
 
     public Skill(){}
 
-    public Skill(String text, Long value, Person person) {
+    public Skill(String text, Long value) {
         this.text = text;
         this.value = value;
-        this.person = person;
     }
 }

@@ -8,10 +8,10 @@ import java.util.Optional;
 
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Integer> {
+public interface PersonRepository extends JpaRepository<Person, Long> {
     @Override
-    Optional<Person> findById(Integer integer);
+    Optional<Person> findById(Long id);
 
     @Override
-    Person getById(Integer integer);
+    Person getById(Long id);
 }

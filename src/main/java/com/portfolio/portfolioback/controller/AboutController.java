@@ -43,12 +43,12 @@ public class AboutController {
     
     
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id){
         aboutserv.delete(id);
     }
 
     @PutMapping("/edit/{id}")
-    public About edit(@PathVariable Integer id, @RequestBody About about){
+    public About edit(@PathVariable Long id, @RequestBody About about){
         aboutserv.getOne(id);
         about.setText(about.getText());
         aboutserv.save(about);

@@ -41,17 +41,17 @@ public class PersonController {
         return personserv.list();
     }
     @GetMapping("/{id}")
-	public Optional<Person> getOne(@PathVariable Integer id){
+	public Optional<Person> getOne(@PathVariable Long id){
             return personserv.getOne(id);
              
         }
     
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id){
         personserv.delete(id);
     }
     @PutMapping("/edit/{id}")
-    public Person edit(@PathVariable Integer id,@RequestBody Person person){
+    public Person edit(@PathVariable Long id,@RequestBody Person person){
          personserv.getOne(id);
         
         person.setName(person.getName());

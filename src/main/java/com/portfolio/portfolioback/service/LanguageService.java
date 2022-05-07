@@ -23,7 +23,7 @@ public class LanguageService implements iLanguageService {
         return languageRepository.findAll();
     }
 
-    public Optional<Language> getOne(int id){
+    public Optional<Language> getOne(Long id){
         return languageRepository.findById(id);
     }
     @Override
@@ -33,11 +33,11 @@ public class LanguageService implements iLanguageService {
 
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         languageRepository.deleteById(id);
     }
 
-    public boolean existsById(int id){
+    public boolean existsById(Long id){
         return languageRepository.existsById(id);
     }
 }

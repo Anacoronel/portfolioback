@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface iEducationService {
     public List<Education> list();
-    public Optional<Education> getOne(int id);
+    public Optional<Education> getOne(Long id);
     public void  save(Education education);
-    public void delete(int id);
-    public boolean existsById(int id);
+    public void delete(Long id);
+    public boolean existsById(Long id);
 }

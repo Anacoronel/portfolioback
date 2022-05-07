@@ -13,9 +13,9 @@ public interface iAboutService {
 
 
     public List<About> list();
-    public Optional<About> getOne(int id);
+    public Optional<About> getOne(Long id);
     public void  save(About about);
-    public void delete(int id);
+    public void delete(Long id);
 
 
 

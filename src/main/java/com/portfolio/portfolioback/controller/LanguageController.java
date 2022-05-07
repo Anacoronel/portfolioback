@@ -2,7 +2,6 @@ package com.portfolio.portfolioback.controller;
 
 
 import com.portfolio.portfolioback.entity.Language;
-import com.portfolio.portfolioback.entity.Person;
 import com.portfolio.portfolioback.repository.PersonRepository;
 import com.portfolio.portfolioback.service.iLanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,20 +24,11 @@ public class LanguageController {
     @Autowired
     private PersonRepository personRepository;
 
-    @PostMapping("/new/{id}")
-    public Language save(@RequestBody Language language , @PathVariable Person id) {
-        Person person= new Person();
-        person.getLanguages().add(language);
-       /* language.getPerson();
-       language.setLanguages(language.getLanguages());
-        language.setLevel(language.getLevel());*/
-
-
-
-        languageserv.save(language); return language;
-
+    @PostMapping("/new")
+    public Language save(@RequestBody Language language){
+        languageserv.save(language);
+        return language;
     }
-
 
 
 
@@ -54,17 +44,17 @@ public class LanguageController {
         return languageserv.list();
     }
     @GetMapping("/{id}")
-	public Optional<Language> getOne(@PathVariable Integer id){
+	public Optional<Language> getOne(@PathVariable Long id){
             return languageserv.getOne(id);
              
         }
     
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id){
         languageserv.delete(id);
     }
     @PutMapping("/edit/{id}")
-    public Language edit(@PathVariable Integer id,@RequestBody Language language){
+    public Language edit(@PathVariable Long id,@RequestBody Language language){
          languageserv.getOne(id);
         
         language.setLevel(language.getLevel());

@@ -40,17 +40,17 @@ public class EducationController {
         return educationserv.list();
     }
     @GetMapping("/{id}")
-	public Optional<Education> getOne(@PathVariable Integer id){
+	public Optional<Education> getOne(@PathVariable Long id){
             return educationserv.getOne(id);
              
         }
     
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id){
         educationserv.delete(id);
     }
     @PutMapping("/edit/{id}")
-    public Education edit(@PathVariable Integer id,@RequestBody Education education){
+    public Education edit(@PathVariable Long id,@RequestBody Education education){
          educationserv.getOne(id);
         
         education.setDate(education.getDate());

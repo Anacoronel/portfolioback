@@ -21,7 +21,7 @@ public class EducationService implements iEducationService {
         return educationRepository.findAll();
     }
 
-    public Optional<Education> getOne(int id){
+    public Optional<Education> getOne(Long id){
         return educationRepository.findById(id);
     }
 
@@ -29,11 +29,11 @@ public class EducationService implements iEducationService {
         educationRepository.save(education);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         educationRepository.deleteById(id);
     }
 
-    public boolean existsById(int id){
+    public boolean existsById(Long id){
         return educationRepository.existsById(id);
     }
 }

@@ -6,10 +6,10 @@ import lombok.Setter;
 @Getter @Setter
 
 public class LanguageDto {
-    private int id;
+    private Long id;
     private String languages;
     private String level;
-    private int person_id;
+    private Long person_id;
 
 
 

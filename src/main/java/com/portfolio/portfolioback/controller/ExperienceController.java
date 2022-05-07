@@ -40,17 +40,17 @@ public class ExperienceController {
         return experienceserv.list();
     }
     @GetMapping("/{id}")
-	public Optional<Experience> getOne(@PathVariable Integer id){
+	public Optional<Experience> getOne(@PathVariable Long id){
             return experienceserv.getOne(id);
              
         }
     
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id){
         experienceserv.delete(id);
     }
     @PutMapping("/edit/{id}")
-    public Experience edit(@PathVariable Integer id,@RequestBody Experience experience){
+    public Experience edit(@PathVariable Long id,@RequestBody Experience experience){
          experienceserv.getOne(id);
         
         experience.setPosition(experience.getPosition());

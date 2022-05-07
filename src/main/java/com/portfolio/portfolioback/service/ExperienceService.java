@@ -21,7 +21,7 @@ public class ExperienceService implements iExperienceService {
         return experienceRepository.findAll();
     }
 
-    public Optional<Experience> getOne(int id){
+    public Optional<Experience> getOne(Long id){
         return experienceRepository.findById(id);
     }
 
@@ -29,11 +29,11 @@ public class ExperienceService implements iExperienceService {
         experienceRepository.save(experience);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         experienceRepository.deleteById(id);
     }
 
-    public boolean existsById(int id){
+    public boolean existsById(Long id){
         return experienceRepository.existsById(id);
     }
 }

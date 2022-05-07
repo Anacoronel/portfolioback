@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public interface iPersonService {
     public List<Person> list();
-    public Optional<Person> getOne(Integer id);
+    public Optional<Person> getOne(Long id);
     public void  save(Person person);
-    public void delete(Integer id);
-    public boolean existsById(Integer id);
+    public void delete(Long id);
+    public boolean existsById(Long id);
 
 }

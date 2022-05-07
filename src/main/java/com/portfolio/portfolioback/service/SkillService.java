@@ -22,7 +22,7 @@ public class SkillService implements iSkillService{
             return skillRepository.findAll();
         }
 
-        public Optional<Skill> getOne(int id){
+        public Optional<Skill> getOne(Long id){
             return skillRepository.findById(id);
         }
 
@@ -32,11 +32,11 @@ public class SkillService implements iSkillService{
             skillRepository.save(skill);
         }
 
-        public void delete(int id){
+        public void delete(Long id){
             skillRepository.deleteById(id);
         }
 
-        public boolean existsById(int id){
+        public boolean existsById(Long id){
             return skillRepository.existsById(id);
         }
 
