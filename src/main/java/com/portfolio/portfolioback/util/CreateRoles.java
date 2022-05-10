@@ -1,5 +1,7 @@
 package com.portfolio.portfolioback.util;
 
+import com.portfolio.portfolioback.security.entity.Rol;
+import com.portfolio.portfolioback.security.enums.RolName;
 import com.portfolio.portfolioback.security.service.RolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
