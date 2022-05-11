@@ -59,9 +59,9 @@ public class AuthController {
         User user = new User(newUser.getEmail(), newUser.getUsername(), passwordEncoder.encode(newUser.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.getByRoleName(RolName.ROLE_USER).get());
-        if(newUser.getRoles().contains("admin")){
-            roles.add(rolService.getByRoleName(RolName.ROLE_ADMIN).get());
-        }
+        /*if(newUser.getRoles().contains("admin")){
+            roles.add(rolService.getByRoleName(RolName.ROLE_ADMIN).get());*/
+
         user.setRoles(roles);
         userService.save(user);
         return new ResponseEntity(new Message("User saved."), HttpStatus.CREATED);
@@ -73,7 +73,7 @@ public class AuthController {
             return new ResponseEntity(new Message("Invalid fields."), HttpStatus.BAD_REQUEST);
         }
         if(!userService.existsByUsername(loginUser.getUsername())){
-            return new ResponseEntity(new Message("Username doesn't exists."), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Message("Username doesn't exist."), HttpStatus.BAD_REQUEST);
         }
         Authentication authentication =
                 authenticationManager
