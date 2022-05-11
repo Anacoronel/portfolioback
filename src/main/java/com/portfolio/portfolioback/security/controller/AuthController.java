@@ -59,8 +59,8 @@ public class AuthController {
         User user = new User(newUser.getEmail(), newUser.getUsername(), passwordEncoder.encode(newUser.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.getByRoleName(RolName.ROLE_USER).get());
-        /*if(newUser.getRoles().contains("admin")){
-            roles.add(rolService.getByRoleName(RolName.ROLE_ADMIN).get());*/
+        if(newUser.getRoles().contains("admin")){
+            roles.add(rolService.getByRoleName(RolName.ROLE_ADMIN).get());}
 
         user.setRoles(roles);
         userService.save(user);
