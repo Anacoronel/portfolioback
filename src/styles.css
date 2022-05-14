@@ -108,6 +108,7 @@
       
   }
   footer{ 
+      display: flex;
 background: linear-gradient(0deg, rgba(238,165,0,1) 0%, rgba(56,56,56,1) 28%, rgba(56,56,56,1) 68%, rgba(47,83,94,1) 77%);
   }
   

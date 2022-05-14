@@ -1,31 +1,30 @@
 <div class="container">
   <div class="row">
     <div class="card-group">
-      <div class="card ">
+      <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-6">
         <div class="card-body">
           <div id="proyectos">
-            <h3 class="card-title">Projects<a href="#" class="icon3" *ngIf="isLogged()"><i id="mas" class="fa fa-plus"
-                  (click)="openModal(template)"></i></a></h3>
+            <h3 class="card-title">Projects<a href="#" class="icon3" *ngIf="isLogged"><i id="mas" class="fa fa-plus"
+                  (click)="openModal2(template)"></i></a></h3>
           </div>
-         
+          <p></p>
 
 
 
-          
-            
 
-          <ul class="proyectos" ><li *ngFor="let project of project"><i class="fa fa-globe"></i>{{project.text}}
-            <br>
-           {{project.techs}}<br>
+
+          <ul class="proyectos" *ngFor="let project of projects"><i class="fa fa-globe"></i>{{project.text}}
+
+            <li>{{project.tecn}}<br>
               <a [href]="project.link" target="_blank">{{project.link}}</a>
 
-              <a href="#" class="icon3"><i class="fa fa-pencil" *ngIf=" isLogged()"
+              <a href="#" class="icon3"><i class="fa fa-pencil" *ngIf="isLogged"
                   (click)="openModal1(template1)"></i></a>
-              <a href="#" class="icon4"><i class="fa fa-trash" *ngIf="isLogged()" (click)="openModal2(template2)"></i></a><p></p>
+              <a href="#" class="icon4"><i class="fa fa-trash" *ngIf="isLogged" (click)="openModal2(template2)"></i></a>
               <ng-template #template1>
                 <form>
                   <div class="modal-header">
-                    <h4 class="modal-title pull-left">Edit Project</h4>
+                    <h4 class="modal-title pull-left">Edit Projectct</h4>
                     <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
                       <span aria-hidden="true"></span>
                     </i>
@@ -111,10 +110,10 @@
 
 
 
-      <div class="card card">
+      <div class="card card col-xs-12 col-sm-12 col-md-12 col-lg-6">
         <div class="card-body">
           <div>
-            <h3 class="card-title">Hard Skills <a href="#" class="icon3" *ngIf="isLogged()"><i class="fa fa-plus"
+            <h3 class="card-title">Hard Skills <a href="#" class="icon3" *ngIf="isLogged"><i class="fa fa-plus"
                   (click)="openModal(templatesk)"></i></a></h3>
           </div>
           <div class="s">
@@ -129,7 +128,7 @@
                   >
                 </circle-progress>
                 <div>
-                  <a href="#" class="icon4 sk1" *ngIf="isLogged()"><i class="fa fa-trash"
+                  <a href="#" class="icon4 sk1" *ngIf="isLogged"><i class="fa fa-trash"
                       (click)="openModal(templateskdel)"></i></a>
                 </div>
 

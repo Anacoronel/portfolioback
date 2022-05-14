@@ -18,8 +18,6 @@ const httpOptions = {
 })
 export class AboutLangService {
   private apiUrl = environment.apiUrl;
-  person_id!:{id:1};
-
 
 
   constructor(private http: HttpClient) { }

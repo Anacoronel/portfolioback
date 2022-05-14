@@ -4,8 +4,6 @@ import { PersonService } from 'src/app/services/person.service';
 import { Router } from '@angular/router';
 import { TokenService } from '../../services/security/token.service';
 import { BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
-import { ToastrService } from 'ngx-toastr';
-
 
 
 @Component({
@@ -27,13 +25,11 @@ export class HeaderComponent implements OnInit {
   city: string = "";
   country: string = "";
   modalRef?: BsModalRef;
-  isLogged =false;
-  isAdmin: boolean=false;
-  errMsj: string="";
+  logged: boolean = false;
+  isAdmin: boolean = false;
 
 
-
-  constructor(private personService: PersonService, private router: Router, private tokenService: TokenService, private modalService: BsModalService,   private toastr: ToastrService) {
+  constructor(private personService: PersonService, private router: Router, private tokenService: TokenService, private modalService: BsModalService) {
 
     this.personService.getPerson().subscribe((person) => {
       console.log(person);
@@ -48,9 +44,7 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (this.tokenService.getToken()) {
-      this.isLogged = true;
-    }
+    if (this.tokenService.isLogged()) { this.logged = true };
     this.isAdmin = this.tokenService.isAdmin();
 
  }
@@ -63,20 +57,18 @@ export class HeaderComponent implements OnInit {
   }
 
   editarPersona(person: Person) {
+    console.log('edit ' + person.id);
     this.id = person.id;
     this.name = person.name;
     this.description = person.description;
     this.city = person.city;
     this.country = person.country;
-    this.personService.editPersona(person).subscribe();
+    this.personService.editPersona(person).subscribe((person) => { });
     this.modalService.hide();
   }
 
   print(){
     window.print();
-  }
-  logged(){
-    return this.tokenService.isLogged();
   }
 
 }

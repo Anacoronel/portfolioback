@@ -6,8 +6,6 @@ import { Project } from 'src/app/models/Project';
 import { Skill } from 'src/app/models/Skill';
 import { TokenService } from 'src/app/services/security/token.service';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-import { ToastrService } from 'ngx-toastr';
-
 
 @Component({
   selector: 'app-proj-skill',
@@ -26,15 +24,15 @@ export class ProjSkillComponent implements OnInit {
   date: string = "";
   text: string = "";
   techs: string = "";
+  person!: Person;
   url: string = "";
   modalRef?: BsModalRef;
-  errMsj: string="";
+  isLogged = false;
+  isAdmin = false;
 
 
 
-
-  constructor(private projskillService: ProjSkillService, private modalService: BsModalService, private tokenService: TokenService,     private toastr: ToastrService
-
+  constructor(private projskillService: ProjSkillService, private modalService: BsModalService, private tokenService: TokenService
   ) { }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -65,7 +63,11 @@ export class ProjSkillComponent implements OnInit {
       console.log(skill);
       this.skill = skill;
     });
-    
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    }
+    this.isAdmin = this.tokenService.isAdmin();
+
   }
 
 
@@ -77,12 +79,7 @@ export class ProjSkillComponent implements OnInit {
     this.link = project.link;
     this.text = project.text;
     this.techs = project.techs;
-
-    this.projskillService.editProject(project).subscribe((project) => { },err => {
-      this.errMsj = err.error.message;
-      this.toastr.error(this.errMsj, 'Admin privileges not found', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
-      });});
+    this.projskillService.editProject(project).subscribe((project) => { });
     this.modalService.hide();
 
   }
@@ -90,67 +87,47 @@ export class ProjSkillComponent implements OnInit {
 
 
   deleteProj(project: Project) {
-    console.log(project.id);
     this.project = this.project.filter((e) => e !== project);
-    this.projskillService.deleteProject(project).subscribe((dato) => {},err => {
-      this.errMsj = err.error.message;
-      this.toastr.error(this.errMsj, 'Admin privileges not found', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
-      });});
+    this.projskillService.deleteProject(project).subscribe();
     this.modalService.hide();
   }
 
   addProj() {
-    const { id, date, link, text, techs } = this;
+    const { id, date, link, text, techs} = this;
     const newProj = { id, date, link, text, techs };
     this.projskillService.addProject(newProj).subscribe((dato) => {
       this.project.push(dato);
 
-    },err => {
-      this.errMsj = err.error.message;
-      this.toastr.error(this.errMsj, 'Admin privileges not found', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
-      });});
+    });
     this.modalService.hide();
   }
   editSk(skill: Skill) {
+    console.log('edit ' + skill.id);
     this.id = skill.id;
     this.date = skill.text;
     this.value = skill.value;
-    this.projskillService.editSkill(skill).subscribe((Skill) => { },err => {
-      this.errMsj = err.error.message;
-      this.toastr.error(this.errMsj, 'Admin privileges not found', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
-      });});
+    this.projskillService.editSkill(skill).subscribe((Skill) => { });
     this.modalService.hide();
 
   }
   deleteSk(skill: Skill) {
     console.log(skill.id);
     this.skill = this.skill.filter((e) => e !== skill);
-    this.projskillService.deleteSkills(skill).subscribe((dato)=>{},err => {
-      this.errMsj = err.error.message;
-      this.toastr.error(this.errMsj, 'Admin privileges not found', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
-      });});
+    this.projskillService.deleteSkills(skill).subscribe();
     this.modalService.hide();
   }
   addSk() {
-    const { id, text, value } = this;
-    const newSkill = { id, text, value };
+    console.log('submitskill', this.skill);
+    const { id, text, value,} = this;
+    const newSkill = { id, text, value};
 
     this.projskillService.addSkill(newSkill).subscribe((dato) => {
+      console.log(dato);
       this.skill.push(dato);
-    },err => {
-      this.errMsj = err.error.message;
-      this.toastr.error(this.errMsj, 'Admin privileges not found', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
-      });});
+    });
     this.modalService.hide();
   }
-  isLogged(){
-    return this.tokenService.isLogged();
-  }
+
 }
 
 

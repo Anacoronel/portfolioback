@@ -1,7 +1,12 @@
 
 @keyframes mymove {
+<<<<<<< HEAD
     from {left: 60px;}
     to {left: 960px;}}
+=======
+    from {left: 0px;}
+    to {left: 1000px;}}
+>>>>>>> b9d5a89cdcf1b4a835e497efd4889669df7469d6
     
 #eye{
     position:absolute;
@@ -15,12 +20,18 @@
     height: 8rem;
     width: auto;
     position:absolute;
+<<<<<<< HEAD
    top:50rem;
    left:55rem;
+=======
+   top:30rem;
+   left:35rem;
+>>>>>>> b9d5a89cdcf1b4a835e497efd4889669df7469d6
    animation: mymove 15s infinite;
     animation-timing-function: ease;    
 
 
+<<<<<<< HEAD
 }
 @media screen and (max-width: 990px){
     @keyframes mymove {
@@ -45,3 +56,6 @@
         left:55rem;
     }
 }
+=======
+}
+>>>>>>> b9d5a89cdcf1b4a835e497efd4889669df7469d6

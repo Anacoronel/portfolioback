@@ -1,6 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { ToastrService } from 'ngx-toastr';
 import { About } from 'src/app/models/About';
 import { Language } from 'src/app/models/Language';
 import { Person } from 'src/app/models/Person';
@@ -37,9 +36,7 @@ export class AboutLangComponent implements OnInit {
     private aboutlangService: AboutLangService,
     private tokenService: TokenService,
     private modalService: BsModalService,
-    private personService: PersonService,
-    private toastr: ToastrService
-
+    private personService: PersonService
 
   ) {}
 
@@ -60,6 +57,7 @@ export class AboutLangComponent implements OnInit {
 
   ngOnInit(): void {
     this.aboutlangService.getAbout().subscribe((data) => {
+      console.log(data);
       this.about = data ;
     });
 
@@ -82,25 +80,19 @@ export class AboutLangComponent implements OnInit {
 
   }
   editAbt(about: About) {
+    console.log('edit ' + about.id);
     this.id = about.id;
     this.text = about.text;
-    this.aboutlangService.editAbout(about).subscribe((about) => { }, err => {
-      this.errMsj = err.error.message;
-      this.toastr.error(this.errMsj, 'Admin privileges not found', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
-      });});
+    this.aboutlangService.editAbout(about).subscribe((about) => { });
     this.modalService.hide();
 
   }
 
   deleteLang(language: Language) {
+    console.log(language.id);
     this.aboutlangService.deleteLanguage(language).subscribe(() => {
       this.language = this.language.filter((e) => e !== language)
-    },err => {
-      this.errMsj = err.error.message;
-      this.toastr.error(this.errMsj, 'Admin privileges not found', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
-      });});
+    });
     this.modalService.hide();
   }
 
@@ -109,12 +101,9 @@ export class AboutLangComponent implements OnInit {
     const { id, languages, level}= this;
     const newIdioma = { id, languages, level};
     this.aboutlangService.addLanguage(newIdioma).subscribe((dato) => {
+      console.log(dato);
       this.language.push(dato);
-    },err => {
-      this.errMsj = err.error.message;
-      this.toastr.error(this.errMsj, 'Admin privileges not found', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
-      });});
+    });
     this.modalService.hide();
 
   }
@@ -123,11 +112,7 @@ export class AboutLangComponent implements OnInit {
     this.id = language.id;
     this.languages= language.languages;
     this.level = language.level;
-    this.aboutlangService.editLanguage(language).subscribe((language) => { },err => {
-      this.errMsj = err.error.message;
-      this.toastr.error(this.errMsj, 'Admin privileges not found', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
-      });});
+    this.aboutlangService.editLanguage(language).subscribe((language) => { });
     this.modalService.hide();
 
   }
