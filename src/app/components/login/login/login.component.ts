@@ -28,14 +28,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-
+ 
+   
   onLogin(): void {
+
     this.loginUser = new LoginUser( this.username, this.password);
     this.authService.login(this.loginUser).subscribe(
       data => {
         this.tokenService.setToken(data.token);
-        this.router.navigate(['/']);
-      },
+        this.router.navigate(['/portfolio']);
+      window.location.reload() ;     },
       err => {
         this.errMsj = err.error.message;
         this.toastr.error(this.errMsj, 'Fail', {
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
         });
       }
     );
+
   }
 
 }

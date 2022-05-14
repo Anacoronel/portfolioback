@@ -44,9 +44,11 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (this.tokenService.isLogged()) { this.logged = true };
-    this.isAdmin = this.tokenService.isAdmin();
-
+    if(this.tokenService.getToken()){
+      this.logged = true;
+    }else {
+      this.logged = false;
+    }
  }
 
 

@@ -13,9 +13,9 @@
 
 
 
-          <ul class="proyectos" *ngFor="let project of projects"><i class="fa fa-globe"></i>{{project.text}}
+          <ul class="proyectos" *ngFor="let project of project"><i class="fa fa-globe"></i>{{project.text}}
 
-            <li>{{project.tecn}}<br>
+            <li>{{project.techs}}<br>
               <a [href]="project.link" target="_blank">{{project.link}}</a>
 
               <a href="#" class="icon3"><i class="fa fa-pencil" *ngIf="isLogged"
