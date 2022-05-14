@@ -3,6 +3,7 @@ package com.portfolio.portfolioback.controller;
 import com.portfolio.portfolioback.entity.Skill;
 import com.portfolio.portfolioback.service.iSkillService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class SkillController {
 
 
 
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new")
     public Skill save(@RequestBody Skill skill){
         skillserv.save(skill);
@@ -43,11 +44,12 @@ public class SkillController {
             return skillserv.getOne(id);
              
         }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         skillserv.delete(id);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     public Skill edit(@PathVariable Long id,@RequestBody Skill skill){
          skillserv.getOne(id);

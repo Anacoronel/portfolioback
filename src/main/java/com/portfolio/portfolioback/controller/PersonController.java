@@ -4,6 +4,7 @@ package com.portfolio.portfolioback.controller;
 import com.portfolio.portfolioback.entity.Person;
 import com.portfolio.portfolioback.service.iPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class PersonController {
 
 
 
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new")
     public Person save(@RequestBody Person person){
         personserv.save(person);
@@ -45,11 +46,12 @@ public class PersonController {
             return personserv.getOne(id);
              
         }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         personserv.delete(id);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     public Person edit(@PathVariable Long id,@RequestBody Person person){
          personserv.getOne(id);

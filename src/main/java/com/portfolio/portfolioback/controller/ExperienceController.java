@@ -4,6 +4,7 @@ package com.portfolio.portfolioback.controller;
 import com.portfolio.portfolioback.entity.Experience;
 import com.portfolio.portfolioback.service.iExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class ExperienceController {
 
 
 
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new")
     public Experience save(@RequestBody Experience experience){
         experienceserv.save(experience);
@@ -44,11 +45,12 @@ public class ExperienceController {
             return experienceserv.getOne(id);
              
         }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         experienceserv.delete(id);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     public Experience edit(@PathVariable Long id,@RequestBody Experience experience){
          experienceserv.getOne(id);
