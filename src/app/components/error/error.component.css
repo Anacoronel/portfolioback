@@ -1,0 +1,47 @@
+
+@keyframes mymove {
+    from {left: 60px;}
+    to {left: 960px;}}
+    
+#eye{
+    position:absolute;
+    background-color: black;
+    width:100%;
+    height:auto;
+
+}
+
+#dino{
+    height: 8rem;
+    width: auto;
+    position:absolute;
+   top:50rem;
+   left:55rem;
+   animation: mymove 15s infinite;
+    animation-timing-function: ease;    
+
+
+}
+@media screen and (max-width: 990px){
+    @keyframes mymove {
+        from {left: 90px;}
+        to {left: 600px;}}
+    #dino{
+        height: 4rem;
+
+        top:40rem;
+        left:55rem;
+    }
+}
+
+@media screen and (max-width: 700px){
+    @keyframes mymove {
+        from {left: 90px;}
+        to {left: 500px;}}
+    #dino{
+        height: 4rem;
+
+        top:35rem;
+        left:55rem;
+    }
+}

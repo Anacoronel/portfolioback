@@ -1,0 +1,240 @@
+<div class="container">
+  <div class="row">
+    <div class="card-group">
+      <div class="card ">
+        <div class="card-body">
+          <div id="proyectos">
+            <h3 class="card-title">Projects<a href="#" class="icon3" *ngIf="isLogged()"><i id="mas" class="fa fa-plus"
+                  (click)="openModal(template)"></i></a></h3>
+          </div>
+         
+
+
+
+          
+            
+
+          <ul class="proyectos" ><li *ngFor="let project of project"><i class="fa fa-globe"></i>{{project.text}}
+            <br>
+           {{project.techs}}<br>
+              <a [href]="project.link" target="_blank">{{project.link}}</a>
+
+              <a href="#" class="icon3"><i class="fa fa-pencil" *ngIf=" isLogged()"
+                  (click)="openModal1(template1)"></i></a>
+              <a href="#" class="icon4"><i class="fa fa-trash" *ngIf="isLogged()" (click)="openModal2(template2)"></i></a><p></p>
+              <ng-template #template1>
+                <form>
+                  <div class="modal-header">
+                    <h4 class="modal-title pull-left">Edit Project</h4>
+                    <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                      <span aria-hidden="true"></span>
+                    </i>
+                  </div>
+                  <div class="modal-body">
+                    <input type="hidden" class="form-control" name="id" [(ngModel)]="project.id" />
+                    <input type="text" class="form-control" placeholder="Date :{{project.date}}" name="date"
+                      [(ngModel)]="project.date" />
+                    <input type="text" class="form-control" name="link" placeholder="Link :{{project.link}}"
+                      [(ngModel)]="project.link" />
+                    <input type="text" class="form-control" name="techs" placeholder="Stack: {{project.techs}}"
+                      [(ngModel)]="project.techs" />
+
+                    <input type="text" class="form-control" name="text" placeholder="Proyecto"
+                      [(ngModel)]="project.text" />
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="editProj(project)">Guardar</button>
+                  </div>
+                </form>
+              </ng-template>
+
+
+
+              <ng-template #template2>
+                <form>
+                  <div class="modal-header">
+                    <h4 class="modal-title pull-left">Delete Project</h4>
+                    <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                      <span aria-hidden="true"></span>
+                    </i>
+                  </div>
+                  <div class="modal-body">
+                    Do you want to delete this project?
+                    <input type="hidden" class="form-control" name="id" [(ngModel)]="project.id" />
+                    <input type="text" class="form-control" name="date" [(ngModel)]="project.date" />
+                    <input type="text" class="form-control" name="link" [(ngModel)]="project.link" />
+                    <input type="text" class="form-control" name="techs" [(ngModel)]="project.techs" />
+
+                    <input type="text" class="form-control" name="text" [(ngModel)]="project.text" />
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="deleteProj(project)">Delete</button>
+                  </div>
+                </form>
+              </ng-template>
+
+
+
+            </li>
+          </ul>
+        </div>
+        <p class="card-text"><small class="text-muted"></small></p>
+
+        <ng-template #template>
+          <form>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Add Project</h4>
+              <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                <span aria-hidden="true"></span>
+              </i>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
+              <input type="text" class="form-control" placeholder="Date" name="date" [(ngModel)]="date" />
+              <input type="text" class="form-control" placeholder="Link" name="link" [(ngModel)]="link" />
+              <input type="text" class="form-control" placeholder="Project" name="text" [(ngModel)]="text" />
+              <input type="text" class="form-control" name="techs" placeholder="Stack" [(ngModel)]="techs" />
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+              <button type="button" class="btn btn-primary" (click)="addProj()">Save</button>
+            </div>
+          </form>
+        </ng-template>
+
+      </div>
+
+
+
+      <div class="card card">
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Hard Skills <a href="#" class="icon3" *ngIf="isLogged()"><i class="fa fa-plus"
+                  (click)="openModal(templatesk)"></i></a></h3>
+          </div>
+          <div class="s">
+            <h4 class="example-h2"></h4>
+
+            <ul class="skills">
+              <li *ngFor="let skill of skill">
+                <circle-progress 
+                [percent]="skill.value" [title]="skill.value" [subtitle]="skill.text" [radius]="27"
+                  [outerStrokeWidth]="13" [innerStrokeWidth]="13" [outerStrokeColor]="'#0EA9D6'"
+                  [innerStrokeColor]="'#adb5bd'" [animation]="true" [animationDuration]="400"[lazy]="false" 
+                  >
+                </circle-progress>
+                <div>
+                  <a href="#" class="icon4 sk1" *ngIf="isLogged()"><i class="fa fa-trash"
+                      (click)="openModal(templateskdel)"></i></a>
+                </div>
+
+
+                <ng-template #templatesked>
+                  <form>
+                    <div class="modal-header">
+                      <h4 class="modal-title pull-left">Edit Skills</h4>
+                      <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                        <span aria-hidden="true"></span>
+                      </i>
+                    </div>
+                    <div class="modal-body">
+                      <input type="hidden" class="form-control" name="id" [(ngModel)]="skill.id" />
+                      <input type="text" class="form-control" placeholder="Titulo{{skill.text}}" name="titulo"
+                        [(ngModel)]="skill.text" />
+                      <input type="text" class="form-control" name="value" placeholder="Logo{{skill.value}}"
+                        [(ngModel)]="skill.value" />
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                      <button type="button" class="btn btn-primary" (click)="editSk(skill)">Save</button>
+                    </div>
+                  </form>
+                </ng-template>
+
+
+
+                <ng-template #templateskdel>
+                  <form>
+                    <div class="modal-header">
+                      <h4 class="modal-title pull-left">Delete Skill</h4>
+                      <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                        <span aria-hidden="true"></span>
+                      </i>
+                    </div>
+                    <div class="modal-body">
+                      Do you want to delete this skill?
+                      <input type="hidden" class="form-control" name="id" [(ngModel)]="skill.id" />
+                      <input type="text" class="form-control" name="text" [(ngModel)]="skill.text" />
+                      <input type="text" class="form-control" name="value" [(ngModel)]="skill.value" />
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                      <button type="button" class="btn btn-primary" (click)="deleteSk(skill)">Delete</button>
+                    </div>
+                  </form>
+                </ng-template>
+
+
+
+              </li>
+            </ul>
+          </div>
+
+          <!--<ul class="skills" *ngFor="let skill of skill">
+              <div>
+                <li><p>{{skill.texto}}</p>
+                  <p>{{skill.value}}</p>
+                  <div>
+                    <mat-progress-spinner class="example-margin" [color]="color" diameter=45 [mode]="mode"
+                      [value]="skill.value"[title]="skill.texto">
+                    </mat-progress-spinner>
+                  </div>
+                </li>
+              </div>
+            </ul>-->
+          <!-- Modal -->
+
+
+
+          <ng-template #templatesk>
+            <form>
+              <div class="modal-header">
+                <h4 class="modal-title pull-left">Add Skill</h4>
+                <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                  <span aria-hidden="true"></span>
+                </i>
+              </div>
+              <div class="modal-body">
+                <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
+
+                <input type="text" class="form-control" placeholder="Value" name="value" [(ngModel)]="value" />
+                <input type="text" class="form-control" placeholder="Skill" name="texto" [(ngModel)]="text" />
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="addSk()">Save</button>
+              </div>
+            </form>
+          </ng-template>
+
+
+
+          <!-- Modal -->
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
