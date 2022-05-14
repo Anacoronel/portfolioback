@@ -4,7 +4,6 @@ package com.portfolio.portfolioback.controller;
 import com.portfolio.portfolioback.entity.Project;
 import com.portfolio.portfolioback.service.iProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +22,6 @@ public class ProjectController {
 
 
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new")
     public Project save(@RequestBody Project project){
         projectserv.save(project);
@@ -45,12 +43,10 @@ public class ProjectController {
             return projectserv.getOne(id);
              
         }
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         projectserv.delete(id);
     }
-    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     public Project edit(@PathVariable Long id,@RequestBody Project project){
          projectserv.getOne(id);

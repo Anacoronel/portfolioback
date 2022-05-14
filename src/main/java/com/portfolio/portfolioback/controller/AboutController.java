@@ -3,7 +3,6 @@ package com.portfolio.portfolioback.controller;
 import com.portfolio.portfolioback.entity.About;
 import com.portfolio.portfolioback.service.iAboutService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,7 +48,6 @@ public class AboutController {
     }
 
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     public About edit(@PathVariable Long id, @RequestBody About about){
         aboutserv.getOne(id);

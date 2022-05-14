@@ -1,7 +1,5 @@
 package com.portfolio.portfolioback.controller;
 
-import org.springframework.security.access.prepost.PreAuthorize;
-
 import com.portfolio.portfolioback.entity.Education;
 import com.portfolio.portfolioback.service.iEducationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,6 @@ public class EducationController {
 
 
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new")
     public Education save(@RequestBody Education education){
         educationserv.save(education);
@@ -45,13 +42,11 @@ public class EducationController {
             return educationserv.getOne(id);
              
         }
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         educationserv.delete(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     public Education edit(@PathVariable Long id,@RequestBody Education education){
          educationserv.getOne(id);
