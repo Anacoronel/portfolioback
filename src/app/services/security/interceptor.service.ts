@@ -18,19 +18,10 @@ export class InterceptorService implements HttpInterceptor {
   ) { }
 
 
+ 
+
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let intReq = req;
-    const token = this.tokenService.getToken();
-    if(token != null){
-      intReq = req.clone({
-        headers: req.headers.set('Authorization', 'Bearer ' + token)
-      });
-    }
-    return next.handle(intReq);
-}
-
-
-  /*intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     if (!this.tokenService.isLogged()) {
       return next.handle(req);
@@ -55,7 +46,7 @@ export class InterceptorService implements HttpInterceptor {
         return throwError(err);
       }
     }));
-  }*/
+  }
 
   private addToken(req: HttpRequest<any>, token: string): HttpRequest<any> {
     return req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });

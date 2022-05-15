@@ -26,7 +26,7 @@ export class AuthService {
     return this.http.post<JwtDto>(this.apiUrl + '/auth/login', loginUser)
   }
 
- // public refresh(dto: JwtDto): Observable<JwtDto> {
- //   return this.http.post<JwtDto>(this.apiUrl + '/auth/refresh', dto);
- // }
+ public refresh(dto: JwtDto): Observable<JwtDto> {
+    return this.http.post<JwtDto>(this.apiUrl + '/auth/refresh', dto);
+  }
 }
