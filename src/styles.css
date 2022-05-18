@@ -189,7 +189,9 @@ background: linear-gradient(0deg, rgba(238,165,0,1) 0%, rgba(56,56,56,1) 28%, rg
       border:1px solid rgba(0,0,0,0.125);
 
     }
-   
+   .modal{
+     width:80%;
+   }
      
   }
   
@@ -265,6 +267,10 @@ background: linear-gradient(0deg, rgba(238,165,0,1) 0%, rgba(56,56,56,1) 28%, rg
             .idiomas{
               margin-left:-1.2rem !important;
             }
+            .modal{
+              width:80%;
+            }
+              
           }
   .logoargp{
       width:60px;
